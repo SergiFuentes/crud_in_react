@@ -1,5 +1,5 @@
 import React from 'react'
-import { CrudTableRow } from './components/CrudTableRow'
+import { CrudTableRow } from './CrudTableRow'
 
 export const CrudTable = ({data}) => {
     return (
