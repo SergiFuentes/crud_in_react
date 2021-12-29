@@ -44,7 +44,7 @@ export const CrudApp = () => {
         <div>
             <h2>CRUD App</h2>
             <CrudForm
-                createData={ createData } updateData={ updateData } dataToEdit={ dataToEdit } setDataToEdtit={ setDataToEdit }
+                createData={ createData } updateData={ updateData } dataToEdit={ dataToEdit } setDataToEdit={ setDataToEdit }
             />
             <CrudTable
                 data={ db }
