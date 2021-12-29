@@ -4,7 +4,8 @@ function App() {
   return (
     <div className="App">
       <h1>REACT exercices</h1>
-      <CrudApp/>
+      <CrudApp />
+      <hr/>
     </div>
   );
 }

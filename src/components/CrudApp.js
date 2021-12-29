@@ -56,6 +56,7 @@ export const CrudApp = () => {
     return (
         <div>
             <h2>CRUD App</h2>
+            <article className="grid-1-2">
             <CrudForm
                 createData={ createData } updateData={ updateData } dataToEdit={ dataToEdit } setDataToEdit={ setDataToEdit }
             />
@@ -64,6 +65,7 @@ export const CrudApp = () => {
                 setDataToEdit={ setDataToEdit }
                 deleteData={ deleteData }
             />
+            </article>
         </div>
     )
 }

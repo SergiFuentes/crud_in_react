@@ -60,8 +60,8 @@ export const CrudForm = ( { createData, updateData, dataToEdit, setDataToEdit } 
             <form onSubmit={handleSubmit}>
                 <input type="text" name='name' placeholder='Name' onChange={handleChange} value={form.name}/>
                 <input type="email" name='email' placeholder='email' onChange={handleChange} value={form.email}/>
-                <input type='submit' value='send' />
-                <input type='reset' value='clear' onClick={handleReset} />
+                <input type='submit' value='Send' />
+                <input type='reset' value='Clear' onClick={handleReset} />
                 
 
             </form>
