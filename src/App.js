@@ -3,7 +3,7 @@ import { CrudApp } from "./components/CrudApp";
 function App() {
   return (
     <div className="App">
-      <h1>Ejercicios con react</h1>
+      <h1>REACT exercices</h1>
       <CrudApp/>
     </div>
   );

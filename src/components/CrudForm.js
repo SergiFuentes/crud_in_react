@@ -6,15 +6,51 @@ const initialForm = {
     id: null,
 };
 
-export const CrudForm = () =>
+export const CrudForm = ( { createData, updateData, dataToEdit, setDataToEdit } ) =>
 {
-    const [ form, setForm ] = useState(  initialForm );
+    const [ form, setForm ] = useState( initialForm );
+    
+    useEffect( () =>
+    {
+        if ( dataToEdit ) 
+        {
+           setForm( dataToEdit );
+        }
+        else
+        {
+            setForm( initialForm ); 
+        }
+    }, [dataToEdit] );
 
-    const handleChange = ( e ) => { }
+    const handleChange = ( e ) =>
+    {
+        setForm( {
+            ...form, [e.target.name]:e.target.value,
+        })
+    }
     
-    const handleSubmit = ( e ) => { }
+    const handleSubmit = ( e ) =>
+    {
+        e.preventDefault();
+
+        if (!form.name || !form.email) {
+            alert( 'Incomplete data' );
+            return;
+        }
+        if (form.id === null) {
+            createData(form);
+        } else
+        {
+            updateData( form );
+        }
+         
+    }
     
-    const handleReset = ( e ) => { }
+    const handleReset = ( e ) =>
+    { 
+        setForm( initialForm );
+        setDataToEdit( null );
+    }
      
     return (
         <div>
