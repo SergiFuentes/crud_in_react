@@ -43,6 +43,8 @@ export const CrudForm = ( { createData, updateData, dataToEdit, setDataToEdit } 
         {
             updateData( form );
         }
+
+        handleReset();
          
     }
     
@@ -54,7 +56,7 @@ export const CrudForm = ( { createData, updateData, dataToEdit, setDataToEdit } 
      
     return (
         <div>
-            <h3>Add</h3>
+            <h3>{dataToEdit? "Edit":"Add"}</h3>
             <form onSubmit={handleSubmit}>
                 <input type="text" name='name' placeholder='Name' onChange={handleChange} value={form.name}/>
                 <input type="email" name='email' placeholder='email' onChange={handleChange} value={form.email}/>
