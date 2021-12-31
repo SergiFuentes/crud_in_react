@@ -21,15 +21,9 @@
       "email": "user4@mail.com"
     },
     {
-      "id": 5
-    },
-    {
-      "id": 6
-    },
-    {
-      "name": "ProfeSsOr McArthuR",
-      "email": "supa@loopa.com",
-      "id": 1640966685045
+      "id": 5,
+      "name": "user5",
+      "email": "user5@mail.com"
     }
   ]
 }

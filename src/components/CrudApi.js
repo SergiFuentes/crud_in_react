@@ -58,23 +58,53 @@ export const CrudApi = () => {
     const updateData = ( data ) =>
     {
         let endpoint = `${ url }/${ data.id }`;
-        console.log( endpoint );
+        //console.log( endpoint );
 
-        let newData = db.map( ( el ) => ( el.id === data.id ? data : el ) );
-        setDb( newData );
+        let options = { body: data, headers: {"content-type": "application/json"}, };
+        
+        api.put( endpoint, options ).then( ( res ) =>
+        {
+            //console.log( res );
+            if ( !res.err )
+            {
+                let newData = db.map( ( el ) => ( el.id === data.id ? data : el ) );
+                setDb( newData );
+            } else
+            {
+                setError( res );
+            }
+        });
     };
-
+    
     const deleteData = ( id ) =>
     {
+        
+        
         let isDelete = window.confirm(
             `¿Are you sure to delete the register with id '${ id }'`
-        );
-
-        if ( isDelete )
-        {
-            let newData = db.filter( ( el ) => el.id !== id );
-            setDb( newData );
-        }
+            );
+            
+            if ( isDelete )
+            {
+                let endpoint = `${ url }/${ id }`;
+                let options = { headers: { "content-type": "application/json" }, };
+                
+                api.del( endpoint, options ).then( res =>{
+                    //console.log( res );
+                    if ( !res.err )
+                    {
+                        let newData = db.filter( ( el ) => el.id !== id );
+                        setDb( newData );
+                    } else
+                    {
+                        setError( res );
+                    }
+                });
+                
+            } else
+            {
+                return;
+            }
     };
 
     return (
