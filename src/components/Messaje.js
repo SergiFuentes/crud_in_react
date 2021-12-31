@@ -1,9 +1,19 @@
 import React from 'react'
 
-export const Messaje = () => {
+export const Messaje = ( { msg, bgColor } ) =>
+{
+    let styles = {
+        padding: "1rem",
+        marginBottom: "1rem",
+        textAlign: "center",
+        color: "#fff",
+        fontWeight: "bold",
+        backgroundColor: bgColor
+    }
+    
     return (
-        <div>
-            
+        <div style= {styles}>
+            <p>{msg}</p> 
         </div>
     )
 }

@@ -13,36 +13,53 @@ export const CrudApi = () => {
     const [ loading , setLoading ] = useState( false );
         
     let api = helpHttp();
-    let url = "http://localhost:5000/user";
+    let url = "http://localhost:5000/users";
     
     useEffect( () =>
     {
         setLoading( true );
-        api.get( url ).then( ( res ) =>
-        { //console.log( res ) } );
-            if ( !res.err )
-            {
-                setDb( res );
-                setError( null );
-            } else
-            {
-                setDb( null );
-                setError( res );
+        helpHttp()
+            .get( url ).then( ( res ) =>
+            { //console.log( res ) } );
+                if ( !res.err )
+                {
+                    setDb( res );
+                    setError( null );
+                } else
+                {
+                    setDb( null );
+                    setError( res );
 
-            }
-            setLoading( false );
-        } );
-    },[] );
+                }
+                setLoading( false );
+            } );
+    },[url] );
   
     const createData = ( data ) =>
     {
         data.id = Date.now();
         //console.log( data );
-        setDb( [ ...db, data ] );
+
+        let options = { body: data, headers: {"content-type": "application/json"}, };
+
+        api.post( url, options ).then( ( res ) =>
+        {
+            //console.log( res );
+            if ( !res.err )
+            {
+                setDb( [ ...db, res ] );
+            } else
+            {
+                setError( res );
+            }
+        });
     };
 
     const updateData = ( data ) =>
     {
+        let endpoint = `${ url }/${ data.id }`;
+        console.log( endpoint );
+
         let newData = db.map( ( el ) => ( el.id === data.id ? data : el ) );
         setDb( newData );
     };
@@ -71,7 +88,7 @@ export const CrudApi = () => {
                     setDataToEdit={ setDataToEdit }
                 />
                 { loading && <Loader /> }
-                {error && <Messaje/> }
+                {error && <Messaje msg={`Error ${error.status}:${error.statusText}`} bgColor="#dc3545"/> }
                 { db && <CrudTable
                     data={ db }
                     setDataToEdit={ setDataToEdit }
